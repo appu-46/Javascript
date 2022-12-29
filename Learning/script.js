@@ -92,5 +92,87 @@ const johnBMI = weightJohn / heightJohn ** 2;
 
 const markHigherBMI = markBMI > johnBMI;
 
-console.log(markBMI, johnBMI, markHigherBMI);
+if (markBMI > johnBMI) {
+  console.log(`Mark's BMI (${markBMI}) is higher than John's (${johnBMI})!`);
+} else {
+  console.log(`John's BMI (${johnBMI}) is higher than Mark's (${markBMI})!`);
+}
+*/
+
+/*
+// type conversion
+const inputYear = "1991";
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+console.log(Number("Jonas"));
+console.log(typeof NaN);
+
+console.log(String(23), 23);
+
+// type coercion
+console.log("I am " + 23 + " years old.");
+console.log("23" - "10" - 3);
+console.log("23" + "10" + 3);
+console.log("23" * "2");
+
+let n = "1" + 1;
+n = n - 1;
+console.log(n);
+*/
+/*
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean("Abhishek"));
+console.log(Boolean({}));
+console.log(Boolean(""));
+
+const money = 00;
+if (money) {
+  console.log("Don't spend it all ;)");
+} else {
+  console.log("Get a Job!");
+}
+
+let height;
+if (height) {
+  console.log("YAY! Height is defined");
+} else {
+  console.log("Height is UNDEFINED");
+}
+*/
+
+/*
+const age = "18";
+
+if (age === 18) console.log("You just become an adult :D (strict)");
+
+if (age == 18) console.log("You just become an adult :D (loose)");
+*/
+
+/*
+const hasDriversLicense = true; //A
+const hasGoodVision = true; // B
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+// const shouldDrive = hasDriversLicense && hasGoodVision;
+
+// if (shouldDrive) {
+//   console.log("Sarah is able to drive!");
+// } else {
+//   console.log("Someome else should drive...");
+// }
+
+const isTried = true; // C
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+if (shouldDrive) {
+  console.log("Sarah is able to drive!");
+} else {
+  console.log("Someome else should drive...");
+}
 */
