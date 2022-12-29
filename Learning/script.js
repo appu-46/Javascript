@@ -176,3 +176,56 @@ if (shouldDrive) {
   console.log("Someome else should drive...");
 }
 */
+
+/*
+const day = "thursday";
+
+switch (day) {
+  case "monday":
+    console.log("Plan course structure");
+    console.log("Go to coding meetup");
+    break;
+
+  case "tuesday":
+    console.log("Prepare theory videos");
+    break;
+  case "wednesday":
+  case "thursday":
+    console.log("Write code examples");
+    break;
+  case "friday":
+    console.log("Record videos");
+    break;
+  case "saturday":
+  case "sunday":
+    console.log("Enjoy the weekend :D");
+    break;
+  default:
+    console.log("Not a valid day!");
+}
+
+if (day === "wednesday" || day === "thursday") {
+  console.log("Write code examples");
+} else {
+  console.log("Not a valid day!");
+}
+*/
+/*
+const age = 23;
+age >= 18
+? console.log("I like to drink wine 🍷")
+: console.log("I like to drink water 💧");
+
+const drink = age >= 18 ? "wine 🍷" : "water 💧";
+console.log(drink);
+
+console.log(`I like to drink ${drink}`);
+*/
+const bill = 430;
+
+const tip = bill >= 300 && bill <= 50 ? bill * 0.15 : bill * 0.2;
+
+console.log(bill, tip);
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the final value ${bill + tip}.`
+);
