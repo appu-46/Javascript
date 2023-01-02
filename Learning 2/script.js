@@ -137,3 +137,5 @@ console.log(friends);
 friends.push("Ryan");
 console.log(friends);
 */
+
+// Coding challenge
