@@ -139,3 +139,89 @@ console.log(friends);
 */
 
 // Coding challenge
+/*
+const bill = [125, 555, 44];
+
+function calcTip(bill) {
+  if (bill >= 50 && bill <= 300) {
+    return bill * 0.15;
+  } else {
+    return bill * 0.2;
+  }
+}
+
+const tip = [calcTip(bill[0]), calcTip(bill[1]), calcTip(bill[2])];
+const total = [
+  calcTip(bill[0]) + bill[0],
+  calcTip(bill[1]) + bill[1],
+  calcTip(bill[2]) + bill[2],
+];
+
+console.log(tip);
+console.log(total);
+*/
+
+/*
+const abhiArray = [
+  "Abhishek",
+  "Prajapati",
+  2037 - 1999,
+  "Engineer",
+  ["Amey", "Kanishk", " prajval"],
+];
+
+const abhi = {
+  firstName: "Abhishek",
+  lastName: "Prajapati",
+  age: 2037 - 1999,
+  job: "Engineer",
+  friends: ["Amey", "Kanishk", " prajval"],
+};
+
+console.log(abhi);
+
+console.log(abhi.lastName);
+console.log(abhi["lastName"]);
+
+const nameKey = "Name";
+console.log(abhi["first" + nameKey]);
+console.log(abhi["last" + nameKey]);
+
+const interestedIn = prompt(
+  "What do you want to know about Abhishek? Choose between firstName,lastName,age, job, and friends"
+);
+
+if (abhi[interestedIn]) {
+  console.log(abhi[interestedIn]);
+} else {
+  console.log(
+    "Wrong request! Choose between firstName,lastName,age, job, and friends."
+  );
+  
+  // Challenege
+  
+  console.log(
+    `${abhi.firstName} has ${abhi.friends.length} friends, and his best friend is called ${abhi.friends[0]}`
+    );
+    
+}*/
+
+const abhi = {
+  firstName: "Abhishek",
+  lastName: "Prajapati",
+  age: 2037 - 1999,
+  job: "Engineer",
+  friends: ["Amey", "Kanishk", " prajval"],
+  hasDriversLicense: true,
+
+  // calcAge: function (birthYear) {
+  //   return 2037 - birthYear;
+  // },
+  calcAge: function () {
+    console.log(this);
+    return 2037 - this.birthYear;
+  },
+};
+
+console.log(abhi.calcAge(1992));
+// console.log(abhi["calcAge"](1991));
