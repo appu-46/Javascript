@@ -209,19 +209,40 @@ if (abhi[interestedIn]) {
 const abhi = {
   firstName: "Abhishek",
   lastName: "Prajapati",
-  age: 2037 - 1999,
+  birthYear: 1999,
   job: "Engineer",
   friends: ["Amey", "Kanishk", " prajval"],
-  hasDriversLicense: true,
+  hasDriversLicense: false,
 
   // calcAge: function (birthYear) {
   //   return 2037 - birthYear;
   // },
   calcAge: function () {
-    console.log(this);
-    return 2037 - this.birthYear;
+    // console.log(this);
+    this.age = 2037 - this.birthYear;
+    return this.age;
   },
+  // The way I did
+  // calcLicense: function () {
+  //   if (this.hasDriversLicense) {
+  //     return "a";
+  //   } else {
+  //     return "no";
+  //   }
+  // },
+
+  getSummary: function () {},
 };
 
-console.log(abhi.calcAge(1992));
+// console.log(abhi.calcAge(1992));
 // console.log(abhi["calcAge"](1991));
+
+// Challenge
+// Jonas is a 46-year old teacher, and he has a driver's license.
+
+// The way I did
+console.log(
+  `${abhi.firstName} is a ${abhi.calcAge()}-year old ${
+    abhi.job
+  }, and has ${abhi.calcLicense()} driver's license.`
+);
