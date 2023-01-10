@@ -231,7 +231,11 @@ const abhi = {
   //   }
   // },
 
-  getSummary: function () {},
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year old ${
+      this.job
+    }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license.`;
+  },
 };
 
 // console.log(abhi.calcAge(1992));
@@ -241,8 +245,11 @@ const abhi = {
 // Jonas is a 46-year old teacher, and he has a driver's license.
 
 // The way I did
+/*
 console.log(
   `${abhi.firstName} is a ${abhi.calcAge()}-year old ${
     abhi.job
   }, and has ${abhi.calcLicense()} driver's license.`
 );
+*/
+console.log(abhi.getSummary());
