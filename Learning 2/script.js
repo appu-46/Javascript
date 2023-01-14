@@ -288,3 +288,58 @@ console.log(
   }`
 );
 */
+
+/*
+//  FOR LOOP
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`Lifting weights repetition ${rep} 🏋️‍♂️`);
+}
+
+const jonas = [
+  "Jonas",
+  "Prajapati",
+  2037 - 1990,
+  "teacher",
+  ["micheal", "Peter", "Steven"],
+  true,
+];
+
+for (let i = 0; i < jonas.length; i++) {
+  console.log(jonas[i], typeof jonas[i]);
+}
+
+const types = [];
+
+for (let i = 0; i < jonas.length; i++) {
+  types.push(typeof jonas[i]);
+}
+
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2037 - years[i]);
+}
+console.log(ages);
+
+// continue and break
+console.log("---Only Strings---");
+for (let i = 0; i < jonas.length; i++) {
+  if (typeof jonas[i] !== "string") continue;
+
+  console.log(jonas[i]);
+}
+
+const jonas = [
+  "Jonas",
+  "Prajapati",
+  2037 - 1990,
+  "teacher",
+  ["micheal", "Peter", "Steven"],
+];
+*/
+
+//////////////////////////////////////////////////////////
+// Coding challenge
