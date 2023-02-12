@@ -91,12 +91,6 @@ btnHold.addEventListener('click', function () {
   // score0El.textContent = currentScore;
   currentScore = 0;
 
-  if (score[activePlayer] === 69) {
-    document.querySelector(`.nice--${activePlayer}`).classList.remove('hidden');
-  } else {
-    document.querySelector(`.nice--${activePlayer}`).classList.add('hidden');
-  }
-
   if (score[activePlayer] >= 100) {
     document
       .querySelector(`.player--${activePlayer}`)
@@ -114,7 +108,11 @@ btnHold.addEventListener('click', function () {
     // btnNew.classList.add('player--winner');
     btnHold.classList.add('hidden');
     btnRoll.classList.add('hidden');
-  } else {
+  } else if (score[activePlayer] === 69) {
+    document.getElementById(`nice--${activePlayer}`).classList.remove('hidden');
+    switchPlayer();
+  } else if (score[activePlayer] !== 69) {
+    document.getElementById(`nice--${activePlayer}`).classList.add('hidden');
     switchPlayer();
   }
 });
