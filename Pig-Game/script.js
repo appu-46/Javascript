@@ -5,6 +5,8 @@ const score0El = document.querySelector('#score--0');
 const score1El = document.getElementById('score--1');
 const player0El = document.querySelector('.player--0');
 const player1El = document.querySelector('.player--1');
+const nice0El = document.querySelector('#nice--0');
+const nice1El = document.querySelector('#nice--1');
 
 const current0EL = document.getElementById('current--0');
 const current1EL = document.getElementById('current--1');
@@ -26,8 +28,12 @@ const init = function () {
   player0El.classList.add('player--active');
   player1El.classList.remove('player--active');
 
+  nice0El.classList.add('hidden');
+  nice1El.classList.add('hidden');
+
   btnHold.classList.remove('hidden');
   btnRoll.classList.remove('hidden');
+
   document
     .querySelector(`.player--${activePlayer}`)
     .classList.remove('player--winner');
@@ -84,6 +90,12 @@ btnHold.addEventListener('click', function () {
 
   // score0El.textContent = currentScore;
   currentScore = 0;
+
+  if (score[activePlayer] === 69) {
+    document.querySelector(`.nice--${activePlayer}`).classList.remove('hidden');
+  } else {
+    document.querySelector(`.nice--${activePlayer}`).classList.add('hidden');
+  }
 
   if (score[activePlayer] >= 100) {
     document

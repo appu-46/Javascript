@@ -77,6 +77,24 @@ main {
   opacity: 1;
 }
 
+.nice {
+  background: linear-gradient(to top right, #14a11b 0%, #d8e620 100%);
+  /* fill-color: transparent; */
+  background-clip: text;
+  text-transform: uppercase;
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgb(2, 97, 0);
+  border-radius: 9px;
+  margin-bottom: 50px;
+  width: 50%;
+  height: 15%;
+  opacity: 0.99;
+  text-align: center;
+  text-justify: center;
+  transition: 0.4s;
+}
+
 .current {
   background-color: #216303;
   opacity: 0.8;
