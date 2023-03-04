@@ -66,6 +66,7 @@ console.log(y === window.y);
 console.log(z === window.z);
 */
 
+/*
 console.log(this);
 
 const calcAge = function (birthYear) {
@@ -98,3 +99,54 @@ const juliet = {
 juliet.calcAge = appu.calcAge;
 
 juliet.calcAge();
+*/
+
+// var firstName = 'Matilda';
+
+/*
+const appu = {
+  firstName: 'Appu',
+  year: 1999,
+  calcAge: function () {
+    // console.log(this);
+    console.log(2037 - this.year);
+
+    // const self = this;
+    // const isMellenial = function () {
+    //   console.log(self);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    //   // isMellenial();
+    // };
+
+    const self = this;
+    const isMellenial = function () {
+      console.log(self);
+      console.log(self.year >= 1981 && self.year <= 1996);
+      // isMellenial();
+    };
+  },
+  greet: function () {
+    console.log(`Hey ${this.firstName}`);
+  },
+};
+
+appu.greet();
+appu.calcAge();
+
+// Arguments keyword
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+
+addExpr(2, 5);
+
+var addArrow = (a, b) => a + b;
+
+*/
+let age = 30;
+let oldAge = age;
+
+age = 31;
+console.log(age);
+console.log(oldAge);
