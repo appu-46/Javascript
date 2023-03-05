@@ -144,9 +144,48 @@ addExpr(2, 5);
 var addArrow = (a, b) => a + b;
 
 */
+
+/*
 let age = 30;
 let oldAge = age;
 
 age = 31;
 console.log(age);
 console.log(oldAge);
+*/
+
+/*
+// Primitive type
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+// Reference type
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before Marriage: ', jessica);
+console.log('After Marriage: ', marriedJessica);
+
+// Copying objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+console.log('Before Marriage: ', jessica2);
+console.log('After Marriage: ', jessicaCopy);
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+*/
