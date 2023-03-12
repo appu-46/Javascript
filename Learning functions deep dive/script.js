@@ -84,6 +84,7 @@ transformer('JavaScript is the best!!', upperFirstWord);
 transformer('JavaScript is the best!!', oneWord);
 */
 
+/*
 const greet = function (greeting) {
   return function (name) {
     console.log(`${greeting} ${name}`);
@@ -94,10 +95,40 @@ const greeterHey = greet('Hey');
 greeterHey('Jonas');
 greeterHey('Steven');
 
-const greetArrow = greeting => {
-  name => {
-    console.log(`${greeting} ${name}`);
-  };
-};
+const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
 
 greetArrow('Hey')('Appu');
+*/
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // Book : function () {}
+  book(fligthNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${fligthNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${fligthNum}`, name });
+  },
+};
+
+lufthansa.book(239, 'Abhishek Prajapati');
+lufthansa.book(635, 'Babayega');
+console.log(lufthansa);
+
+const eurowings = {
+  name: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+// Does NOT work
+// book(23, 'Sarah Williams');
+
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Copper');
