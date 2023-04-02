@@ -236,6 +236,7 @@ runOnce();
 (() => console.log('This will ALSO never run again'))();
 */
 
+/*
 const secureBooking = function () {
   let passengerCount = 0;
 
@@ -252,3 +253,28 @@ booker();
 booker();
 
 console.dir(booker);
+*/
+
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+
+// Re-assigning fucntion
+
+h();
+f();
