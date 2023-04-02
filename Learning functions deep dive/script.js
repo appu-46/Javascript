@@ -255,6 +255,7 @@ booker();
 console.dir(booker);
 */
 
+/*
 let f;
 
 const g = function () {
@@ -273,8 +274,41 @@ const h = function () {
 
 g();
 f();
-
+console.dir(f);
 // Re-assigning fucntion
 
 h();
 f();
+console.dir(f);
+
+// Example 2
+const boardPassengers = function (n, wait) {
+  const preGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${preGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds.`);
+};
+
+boardPassengers(180, 3);
+
+console.log(`something.`);
+*/
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
+
+// document.querySelector('body').addEventListener(
+//   'click',
+//   (header().header.style.color = 'blue')
+//   // console.log(`Hello`);
+// );
