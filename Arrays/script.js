@@ -80,6 +80,9 @@ const dislayMovements = function (movements) {
 
 dislayMovements(account1.movements);
 
+// For debugging the above for loop
+// console.log(containerMovements.innerHTML);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -187,3 +190,22 @@ currenciesUnique.forEach(function (key, value, set) {
 });
 
 */
+
+// CODING CHALLENEGE :
+
+const Julia = [3, 5, 2, 12, 7];
+const Kate = [4, 1, 15, 8, 3];
+
+const JuliaDogs = Julia.slice(1, -1);
+const KateDogs = Kate.slice(1, -1);
+
+console.log(Julia, JuliaDogs, Kate, KateDogs);
+
+const Doggo = function (PupperArray) {
+  PupperArray.forEach(function (age, i) {
+    const gig = age > 3 ? 'adult' : 'puppy 🐶';
+    console.log(`Dog number ${i + 1} is a ${gig}, and is ${age} years old. `);
+  });
+};
+Doggo(JuliaDogs);
+Doggo(KateDogs);
