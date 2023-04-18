@@ -93,7 +93,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -191,6 +191,7 @@ currenciesUnique.forEach(function (key, value, set) {
 
 */
 
+/*
 // CODING CHALLENEGE :
 
 const Julia = [3, 5, 2, 12, 7];
@@ -209,3 +210,48 @@ const Doggo = function (PupperArray) {
 };
 Doggo(JuliaDogs);
 Doggo(KateDogs);
+*/
+
+/*
+
+const euroToUsd = 1.1;
+
+const movementsUSD = movements.map(function (mov) {
+  return mov * euroToUsd;
+});
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * euroToUsd);
+
+console.log(movementsUSDfor);
+
+const movementsUSDarrow = movements.map(mov => mov * euroToUsd);
+
+console.log(movementsUSDarrow);
+
+const movementsDesc = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+
+console.log(movementsDesc);
+*/
+
+const user = 'Steven Thmoas Williams';
+
+const createUsername = function (user) {
+  const username = user
+    .toLocaleLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+
+  return username;
+};
+
+console.log(username);
