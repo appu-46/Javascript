@@ -242,16 +242,39 @@ const movementsDesc = movements.map(
 console.log(movementsDesc);
 */
 
+/*
 const user = 'Steven Thmoas Williams';
 
-const createUsername = function (user) {
-  const username = user
-    .toLocaleLowerCase()
-    .split(' ')
-    .map(name => name[0])
-    .join('');
+const createUsername = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLocaleLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
 
-  return username;
+  // return username;
 };
+createUsername(accounts);
+console.log(accounts);
+*/
 
-console.log(username);
+const deposit = movements.filter(function (mov) {
+  return mov > 0;
+});
+
+console.log(deposit);
+console.log(movements);
+
+const depositFor = [];
+
+for (const mov of movements) if (mov > 0) depositFor.push(mov);
+
+console.log(depositFor);
+
+const withdrawals = movements.filter(function (mov) {
+  return mov < 0;
+});
+
+console.log(withdrawals);
