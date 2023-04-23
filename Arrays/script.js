@@ -260,6 +260,7 @@ createUsername(accounts);
 console.log(accounts);
 */
 
+/*
 const deposit = movements.filter(function (mov) {
   return mov > 0;
 });
@@ -278,3 +279,22 @@ const withdrawals = movements.filter(function (mov) {
 });
 
 console.log(withdrawals);
+*/
+
+console.log(movements);
+
+// accumulator -> SNOWBALL
+
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i} : ${acc}`);
+  console.log(`acc = ${acc}, cur = ${cur}, arr = ${arr}`);
+  return acc + cur;
+});
+
+console.log(balance);
+
+let balance2 = 0;
+
+for (const mov of movements) balance2 += mov;
+
+console.log(balance2);
