@@ -338,12 +338,22 @@ console.log(CalchumanAge(data2));
 
 const AdultDoggos = function (arr) {
   let humanAge = CalchumanAge(arr);
-  console.log(humanAge);
-  console.log(CalchumanAge(arr));
+
   humanAge = humanAge.filter(function (age) {
-    return age < 18;
+    return age > 18;
   });
   return humanAge;
 };
 
 console.log(AdultDoggos(data1));
+console.log(AdultDoggos(data2));
+
+const CalcAverage = function (arr) {
+  let humanAge = AdultDoggos(arr);
+  // console.log(humanAge);
+  const AverageAge = humanAge.reduce((acc, age) => acc + age) / humanAge.length;
+  return AverageAge;
+};
+
+console.log(CalcAverage(data1));
+console.log(CalcAverage(data2));
