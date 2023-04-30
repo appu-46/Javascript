@@ -79,7 +79,7 @@ const dislayMovements = function (movements) {
 };
 
 const displayCurrentBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov);
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance}€`;
 };
 
@@ -319,3 +319,31 @@ for (const mov of movements) balance2 += mov;
 console.log(balance2);
 
 */
+
+const data1 = [5, 2, 4, 1, 15, 8, 3];
+const data2 = [16, 6, 10, 5, 6, 1, 4];
+
+const CalchumanAge = function (arr) {
+  let humanAgeArr = [];
+  const humanAge = arr.forEach(function (dogAge) {
+    if (dogAge <= 2) humanAgeArr.push(2 * dogAge);
+    else humanAgeArr.push(16 + dogAge * 4);
+  });
+  // console.log(humanAge);
+  return humanAgeArr;
+};
+
+console.log(CalchumanAge(data1));
+console.log(CalchumanAge(data2));
+
+const AdultDoggos = function (arr) {
+  let humanAge = CalchumanAge(arr);
+  console.log(humanAge);
+  console.log(CalchumanAge(arr));
+  humanAge = humanAge.filter(function (age) {
+    return age < 18;
+  });
+  return humanAge;
+};
+
+console.log(AdultDoggos(data1));
