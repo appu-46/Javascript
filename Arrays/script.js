@@ -78,7 +78,27 @@ const dislayMovements = function (movements) {
   });
 };
 
+const displayCurrentBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov);
+  labelBalance.textContent = `${balance}€`;
+};
+
+displayCurrentBalance(account1.movements);
+
 dislayMovements(account1.movements);
+
+const createUsername = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLocaleLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+
+  // return username;
+};
+createUsername(accounts);
 
 // For debugging the above for loop
 // console.log(containerMovements.innerHTML);
@@ -279,7 +299,6 @@ const withdrawals = movements.filter(function (mov) {
 });
 
 console.log(withdrawals);
-*/
 
 console.log(movements);
 
@@ -298,3 +317,5 @@ let balance2 = 0;
 for (const mov of movements) balance2 += mov;
 
 console.log(balance2);
+
+*/
