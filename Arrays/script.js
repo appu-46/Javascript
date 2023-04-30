@@ -319,7 +319,9 @@ for (const mov of movements) balance2 += mov;
 console.log(balance2);
 
 */
+// Three different functions
 
+console.log('--------lengthy approach but code more readable----------');
 const data1 = [5, 2, 4, 1, 15, 8, 3];
 const data2 = [16, 6, 10, 5, 6, 1, 4];
 
@@ -339,9 +341,7 @@ console.log(CalchumanAge(data2));
 const AdultDoggos = function (arr) {
   let humanAge = CalchumanAge(arr);
 
-  humanAge = humanAge.filter(function (age) {
-    return age > 18;
-  });
+  humanAge = humanAge.filter(age => age > 18);
   return humanAge;
 };
 
@@ -357,3 +357,21 @@ const CalcAverage = function (arr) {
 
 console.log(CalcAverage(data1));
 console.log(CalcAverage(data2));
+
+console.log('------------Single function for all------------');
+// Single function for all executions
+
+const oneFunctionForAll = function (arr) {
+  const humanAge1 = arr.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+  console.log(humanAge1);
+
+  const AdultDogs = humanAge1.filter(age => age > 18);
+  console.log(AdultDogs);
+
+  const AverageAge1 =
+    AdultDogs.reduce((acc, age) => acc + age) / AdultDogs.length;
+  console.log(AverageAge1);
+};
+
+oneFunctionForAll(data1);
+oneFunctionForAll(data2);
