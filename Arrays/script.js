@@ -85,8 +85,31 @@ const displayCurrentBalance = function (movements) {
 
 displayCurrentBalance(account1.movements);
 
-dislayMovements(account1.movements);
+const calcDisplaySummary = function (movements) {
+  const income = movements
+    .filter(mov => mov > 0)
+    // .map(mov => mov)
+    .reduce((acc, mov) => acc + mov, 0);
 
+  labelSumIn.textContent = `${income}€`;
+
+  const outoging = movements
+    .filter(mov => mov < 0)
+    .map(mov => Math.abs(mov))
+    .reduce((acc, mov) => acc + mov, 0);
+
+  labelSumOut.textContent = `${outoging}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .reduce((acc, int) => acc + int, 0);
+
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
+
+dislayMovements(account1.movements);
 const createUsername = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -319,6 +342,8 @@ for (const mov of movements) balance2 += mov;
 console.log(balance2);
 
 */
+
+/*
 // Three different functions
 
 console.log('--------lengthy approach but code more readable----------');
@@ -375,3 +400,18 @@ const oneFunctionForAll = function (arr) {
 
 oneFunctionForAll(data1);
 oneFunctionForAll(data2);
+
+*/
+
+/*
+
+const eurToUSD = 1.1;
+
+// PIPELINE
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUSD)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD);
+*/
