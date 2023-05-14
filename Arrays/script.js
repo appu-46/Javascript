@@ -63,6 +63,9 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const dislayMovements = function (movements) {
   containerMovements.innerHTML = '';
+
+  const movs = sort ? movements.splice().sort((a, b) => a - b) : movements;
+
   movements.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
@@ -223,6 +226,11 @@ btnClose.addEventListener('click', function (e) {
     console.log(`Incorrect username or pin entered.`);
   }
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  dislayMovements(currentAccount.movements, true);
 });
 
 /////////////////////////////////////////////////
