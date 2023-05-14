@@ -32,7 +32,7 @@ const account4 = {
   interestRate: 1,
   pin: 4444,
 };
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movementsdemo = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const accounts = [account1, account2, account3, account4];
 
 // Elements
@@ -525,4 +525,42 @@ console.log(accounts);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
+*/
+
+/*
+console.log(movementsdemo);
+
+// Equality
+console.log(movementsdemo.includes(1300));
+
+// Some codition (any)
+console.log(movementsdemo.some(mov => mov === 1300));
+
+// Every condition
+console.log(movementsdemo.every(mov => mov === 1300));
+
+// Seperate callback
+
+const deposit = mov => mov < 0;
+
+console.log(movementsdemo.some(deposit));
+console.log(movementsdemo.every(deposit));
+console.log(movementsdemo.filter(deposit));
+
+*/
+/*
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+
+console.log(owners.sort());
+console.log(owners);
+
+console.log(movementsdemo);
+// movementsdemo.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+
+movementsdemo.sort((a, b) => a - b);
+console.log(movementsdemo);
+
 */
