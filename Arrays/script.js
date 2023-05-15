@@ -576,3 +576,40 @@ movementsdemo.sort((a, b) => a - b);
 console.log(movementsdemo);
 
 */
+/*
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat());
+console.log(arrDeep.flat(2));
+
+const overallBalance = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov);
+
+console.log(overallBalance);
+*/
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+const x = new Array(7);
+console.log(x);
+
+// console.log(x.map(() => 5));
+// x.fill(1);
+
+x.fill(1, 3, 5);
+x.fill(1);
+arr.fill(23, 2, 6);
+
+console.log(arr);
+console.log(x);
+
+// Array.from
+const y = Array.from({ lenght: 7 }, () => 7);
+console.log(y);
+
+const z = Array.from({ lenght: 7 }, (_, i) => i + 1);
+console.log(z);
