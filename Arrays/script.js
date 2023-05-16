@@ -608,8 +608,8 @@ console.log(arr);
 console.log(x);
 
 // Array.from
-const y = Array.from({ lenght: 7 }, () => 7);
+const y = Array.from({ length: 7 }, () => 7);
 console.log(y);
 
-const z = Array.from({ lenght: 7 }, (_, i) => i + 1);
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
 console.log(z);
