@@ -585,12 +585,13 @@ console.log(arrDeep.flat());
 console.log(arrDeep.flat(2));
 
 const overallBalance = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((acc, mov) => acc + mov);
+.flatMap(acc => acc.movements)
+.reduce((acc, mov) => acc + mov);
 
 console.log(overallBalance);
 */
 
+/*
 const arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
@@ -613,3 +614,29 @@ console.log(y);
 
 const z = Array.from({ length: 7 }, (_, i) => i + 1);
 console.log(z);
+*/
+
+///////////////////////////
+// Array exercise :
+//this is a nice title => This Is A Nice Title
+
+/*
+const convertTitleCase = function (title) {
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+  const titleString = title
+    .toLowerCase()
+    .split(' ')
+    .map(word =>
+      exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+    )
+    .join(' ');
+  // camelString.map(title => title);
+
+  return titleString;
+};
+
+console.log(convertTitleCase('this is a nice title'));
+
+*/
+
+// CODING CHALLENGE
