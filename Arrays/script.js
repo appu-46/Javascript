@@ -640,3 +640,45 @@ console.log(convertTitleCase('this is a nice title'));
 */
 
 // CODING CHALLENGE
+// TEST DATA :
+const dogs = [
+  {
+    weight: 22,
+    curFood: 250,
+    owners: ['Alice', 'Bob'],
+  },
+  {
+    weight: 8,
+    curFood: 200,
+    owners: ['Matilda'],
+  },
+  {
+    weight: 13,
+    curFood: 275,
+    owners: ['Sarah', 'John'],
+  },
+  {
+    weight: 32,
+    curFood: 340,
+    owners: ['Michael'],
+  },
+];
+// console.log(typeof dogs[0].weight);
+
+const calcRecommendedFoodPortion = function (dogs) {
+  dogs.forEach(function (dog) {
+    console.log(typeof dog);
+    dog.recommendedPortion = dog.weight ** 0.75 * 28;
+  });
+};
+// console.log(recommendedFood);
+
+// return recommendedFood;
+
+calcRecommendedFoodPortion(dogs);
+
+console.log(dogs);
+
+dogs.forEach(function (dog) {
+  dog.owners.find('Sarah');
+});
