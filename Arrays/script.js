@@ -667,18 +667,55 @@ const dogs = [
 
 const calcRecommendedFoodPortion = function (dogs) {
   dogs.forEach(function (dog) {
-    console.log(typeof dog);
-    dog.recommendedPortion = dog.weight ** 0.75 * 28;
+    dog.recommendedPortion = Math.trunc(dog.weight ** 0.75 * 28);
   });
 };
+calcRecommendedFoodPortion(dogs);
 // console.log(recommendedFood);
+// let eatenTooMuch = [];
+// let eatenTooLess = [];
 
 // return recommendedFood;
+const doggoEatingEnough = function (dogs) {
+  dogs.forEach(function (dog) {
+    if (
+      dog.curFood >= 0.9 * dog.recommendedPortion &&
+      dog.curFood <= 1.1 * dog.recommendedPortion
+    ) {
+      console.log(`${dog.owners}'s dog is eating okay`);
+    }
+    if (dog.curFood <= 0.9 * dog.recommendedPortion) {
+      // eatenTooLess.push(dog.owners);
+      console.log(`${dog.owners}'s dog is eating too little`);
+    }
+    if (dog.curFood >= 1.1 * dog.recommendedPortion) {
+      // eatenTooMuch.push(dog.owners);
+      console.log(`${dog.owners}'s dog is eating too much`);
+    }
+  });
+};
+// doggoEatingEnough(dogs);
 
-calcRecommendedFoodPortion(dogs);
+// Filter method, should have used this
+const eatenTooMuch = dogs
+  .filter(dog => dog.curFood >= 1.1 * dog.recommendedPortion)
+  .flatMap(dog => dog.owners);
+
+console.log(eatenTooMuch);
+
+const eatenTooLess = dogs
+  .filter(dog => dog.curFood <= 0.9 * dog.recommendedPortion)
+  .flatMap(dog => dog.owners);
+console.log(eatenTooLess);
 
 console.log(dogs);
 
-dogs.forEach(function (dog) {
-  dog.owners.find('Sarah');
-});
+const sarahDog = dogs.find(dog => dog.owners.includes('Sarah'));
+
+// const findIndexOwner = function (dogs, owner) {
+//   dogs.forEach(function (dog) {
+//     const targetIndex = dog.owners.findIndex(owners => (owners = owner));
+//     return targetIndex;
+//   });
+// };
+console.log(sarahDog);
