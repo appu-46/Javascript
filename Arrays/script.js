@@ -585,12 +585,13 @@ console.log(arrDeep.flat());
 console.log(arrDeep.flat(2));
 
 const overallBalance = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((acc, mov) => acc + mov);
+.flatMap(acc => acc.movements)
+.reduce((acc, mov) => acc + mov);
 
 console.log(overallBalance);
 */
 
+/*
 const arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
@@ -608,8 +609,113 @@ console.log(arr);
 console.log(x);
 
 // Array.from
-const y = Array.from({ lenght: 7 }, () => 7);
+const y = Array.from({ length: 7 }, () => 7);
 console.log(y);
 
-const z = Array.from({ lenght: 7 }, (_, i) => i + 1);
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
 console.log(z);
+*/
+
+///////////////////////////
+// Array exercise :
+//this is a nice title => This Is A Nice Title
+
+/*
+const convertTitleCase = function (title) {
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+  const titleString = title
+    .toLowerCase()
+    .split(' ')
+    .map(word =>
+      exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+    )
+    .join(' ');
+  // camelString.map(title => title);
+
+  return titleString;
+};
+
+console.log(convertTitleCase('this is a nice title'));
+
+*/
+
+// CODING CHALLENGE
+// TEST DATA :
+const dogs = [
+  {
+    weight: 22,
+    curFood: 250,
+    owners: ['Alice', 'Bob'],
+  },
+  {
+    weight: 8,
+    curFood: 200,
+    owners: ['Matilda'],
+  },
+  {
+    weight: 13,
+    curFood: 275,
+    owners: ['Sarah', 'John'],
+  },
+  {
+    weight: 32,
+    curFood: 340,
+    owners: ['Michael'],
+  },
+];
+// console.log(typeof dogs[0].weight);
+
+const calcRecommendedFoodPortion = function (dogs) {
+  dogs.forEach(function (dog) {
+    dog.recommendedPortion = Math.trunc(dog.weight ** 0.75 * 28);
+  });
+};
+calcRecommendedFoodPortion(dogs);
+// console.log(recommendedFood);
+// let eatenTooMuch = [];
+// let eatenTooLess = [];
+
+// return recommendedFood;
+const doggoEatingEnough = function (dogs) {
+  dogs.forEach(function (dog) {
+    if (
+      dog.curFood >= 0.9 * dog.recommendedPortion &&
+      dog.curFood <= 1.1 * dog.recommendedPortion
+    ) {
+      console.log(`${dog.owners}'s dog is eating okay`);
+    }
+    if (dog.curFood <= 0.9 * dog.recommendedPortion) {
+      // eatenTooLess.push(dog.owners);
+      console.log(`${dog.owners}'s dog is eating too little`);
+    }
+    if (dog.curFood >= 1.1 * dog.recommendedPortion) {
+      // eatenTooMuch.push(dog.owners);
+      console.log(`${dog.owners}'s dog is eating too much`);
+    }
+  });
+};
+// doggoEatingEnough(dogs);
+
+// Filter method, should have used this
+const eatenTooMuch = dogs
+  .filter(dog => dog.curFood >= 1.1 * dog.recommendedPortion)
+  .flatMap(dog => dog.owners);
+
+console.log(eatenTooMuch);
+
+const eatenTooLess = dogs
+  .filter(dog => dog.curFood <= 0.9 * dog.recommendedPortion)
+  .flatMap(dog => dog.owners);
+console.log(eatenTooLess);
+
+console.log(dogs);
+
+const sarahDog = dogs.find(dog => dog.owners.includes('Sarah'));
+
+// const findIndexOwner = function (dogs, owner) {
+//   dogs.forEach(function (dog) {
+//     const targetIndex = dog.owners.findIndex(owners => (owners = owner));
+//     return targetIndex;
+//   });
+// };
+console.log(sarahDog);
