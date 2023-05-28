@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 const Person = function (firstName, birthYear) {
   // Instance properties
   this.firstName = firstName;
@@ -31,3 +31,54 @@ jonas.calcAge();
 matilda.calcAge();
 
 console.log(jonas.__proto__);
+console.log(jonas.__proto__ === Person.prototype);
+
+Person.prototype.species = 'Homo Sapiens';
+console.log(jonas.species, matilda.species);
+
+console.log(jonas);
+console.log(jonas.__proto__);
+console.log(jonas.__proto__.__proto__);
+console.log(jonas.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+
+const arr = [3, 6, 4, 4, 6, 7, 3, 4, 5]; // new Array === []
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+console.dir(x => x + 1);
+
+*/
+
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+Car.prototype.accelerate = function () {
+  this.speed = this.speed + 10;
+  console.log(10 + this.speed);
+};
+Car.prototype.brake = function () {
+  this.speed = this.speed - 5;
+  console.log(this.speed - 5);
+};
+
+const car1 = new Car('BMW', 120);
+const car2 = new Car('Mercedes', 95);
+
+console.log(car1, car2);
+car1.accelerate();
+car2.brake();
+car2.accelerate();
+
+console.log(car1, car2);
