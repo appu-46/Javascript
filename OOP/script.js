@@ -90,21 +90,55 @@ console.log(car1, car2);
 
 // class decleration
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
 
+  // Methods will be added to .prototype property
   calcAge() {
     console.log(2037 - this.birthYear);
   }
 
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
   greet() {
-    console.log(`Hey ${this.firstName}`);
+    console.log(`Hey ${this._fullName}`);
   }
 }
 
-const jessica = new PersonCl('Jessica', 1999);
+const jessica = new PersonCl('Jessica Davis', 1999);
 console.log(jessica);
 jessica.calcAge();
 jessica.greet();
+
+// 1. Class are not hoisted
+// 2. Classes are first-class citizen
+// 3. CLasses are executed in strict mode
+
+const walter = new PersonCl('Walter White', 1992);
+
+walter.calcAge();
+
+const account = {
+  owner: 'Jonas',
+  movements: [200, 354, 566, 1223],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+};
+
+console.log(account.latest);
