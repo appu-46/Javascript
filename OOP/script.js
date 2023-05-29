@@ -58,27 +58,53 @@ console.log(arr.unique());
 console.dir(x => x + 1);
 
 */
-
+/*
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
 };
 
 Car.prototype.accelerate = function () {
-  this.speed = this.speed + 10;
-  console.log(10 + this.speed);
+  this.speed += 10;
+  console.log(`${this.make} is going at ${this.speed}km/h.`);
 };
 Car.prototype.brake = function () {
-  this.speed = this.speed - 5;
-  console.log(this.speed - 5);
+  this.speed -= 5;
+  console.log(`${this.make} is going at ${this.speed}km/h.`);
 };
 
 const car1 = new Car('BMW', 120);
 const car2 = new Car('Mercedes', 95);
 
 console.log(car1, car2);
+
 car1.accelerate();
 car2.brake();
 car2.accelerate();
 
 console.log(car1, car2);
+*/
+
+//  Class expression
+//  const PersonCl = class {}
+
+// class decleration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1999);
+console.log(jessica);
+jessica.calcAge();
+jessica.greet();
