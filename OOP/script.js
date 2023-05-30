@@ -142,3 +142,29 @@ const account = {
 };
 
 console.log(account.latest);
+
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed}km/h.`);
+  }
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed}km/h.`);
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+    // console.log(`'${make}' is going at ${this.speed/=1.6} mi/h`);
+  }
+
+  set speedUS(speed) {
+    speed = this.speed * 1.6;
+  }
+}
+
+const car1 = new Car('Ford', 120);
