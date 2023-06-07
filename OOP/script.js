@@ -298,7 +298,6 @@ class EV extends Car {
 
 const Tesla = new EV('Tesla', 100, 69);
 */
-
 class PersonCl {
   constructor (fullName,birthYear) {
     this.fullName = fullName;
@@ -327,5 +326,5 @@ class PersonCl {
   }
 }
 
-
 const Sarah = new PersonCl('Sarah',1999)
+
