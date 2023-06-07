@@ -278,7 +278,7 @@ class Car {
   }
 }
 
-class EV {
+class EV extends Car {
   constructor(make, speed, charge) {
     Car.call(this, make, speed);
     this.charge = charge;
@@ -298,3 +298,34 @@ class EV {
 
 const Tesla = new EV('Tesla', 100, 69);
 */
+
+class PersonCl {
+  constructor (fullName,birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  set fullName (name) {
+    console.log(name)
+    if (name.includes(' ')) this._fullname = name
+    else alert(`Please enter fullname!`)
+  }
+
+  get fullName(){
+    return this._fullname
+  }
+
+  greet() {
+    console.log(`Greetings ${this._fullname}!`)
+  }
+}
+
+
+const Sarah = new PersonCl('Sarah',1999)
