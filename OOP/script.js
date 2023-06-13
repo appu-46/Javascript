@@ -298,8 +298,9 @@ class EV extends Car {
 
 const Tesla = new EV('Tesla', 100, 69);
 */
+/*
 class PersonCl {
-  constructor (fullName,birthYear) {
+  constructor(fullName, birthYear) {
     this.fullName = fullName;
     this.birthYear = birthYear;
   }
@@ -311,20 +312,33 @@ class PersonCl {
     return 2037 - this.birthYear;
   }
 
-  set fullName (name) {
-    console.log(name)
-    if (name.includes(' ')) this._fullname = name
-    else alert(`Please enter fullname!`)
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) this._fullname = name;
+    else alert(`Please enter fullname!`);
   }
 
-  get fullName(){
-    return this._fullname
+  get fullName() {
+    return this._fullname;
   }
 
   greet() {
-    console.log(`Greetings ${this._fullname}!`)
+    console.log(`Greetings ${this._fullname}!`);
   }
 }
 
-const Sarah = new PersonCl('Sarah',1999)
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    super(fullName, birthYear);
+    this.course = course;
+  }
+  introduction() {
+    console.log(`My name is ${this.fullname} and I study ${this.course}`);
+  }
+}
 
+const Sarah = new StudentCl('Sarah Butt', 1999, 'EXTC');
+
+console.log(Sarah.introduction());
+Sarah.calcAge();
+*/
