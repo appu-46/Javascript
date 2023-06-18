@@ -377,37 +377,41 @@ jay.introduce();
 class Account {
   // Public fields (instances)
   locale = navigator.language;
-  _movements = [];
+
+  // Private fields
+  #movements = [];
+  #pin;
 
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
+    this.#pin = pin;
     // Protected property
     // this._movements = [];
     // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${this.owner}!`);
   }
-  // Public interface
+  // Public interface / Public methods
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
   withdraw(val) {
     this.deposit(-val);
   }
-  _approveLoan(val) {
-    return true;
-  }
-
   requestLoan(val) {
     if (this._approveLoan(val)) {
       this.deposit(val);
       console.log('Loan Approved');
     }
+  }
+
+  // Private methods
+  #approveLoan(val) {
+    return true;
   }
 }
 
@@ -423,3 +427,7 @@ console.log(acc1.getMovements());
 
 console.log(acc1);
 console.log(acc1.pin);
+
+// console.log(acc1.#movements);
+
+console.log(acc1.#approve);
