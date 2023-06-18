@@ -375,13 +375,17 @@ jay.introduce();
 */
 
 class Account {
+  // Public fields (instances)
+  locale = navigator.language;
+  _movements = [];
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     this.pin = pin;
     // Protected property
-    this._movements = [];
-    this.locale = navigator.language;
+    // this._movements = [];
+    // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${this.owner}!`);
   }
