@@ -373,7 +373,7 @@ jay.init('Jay', 2009, 'EXTC');
 
 jay.introduce();
 */
-
+/*
 class Account {
   // Public fields (instances)
   locale = navigator.language;
@@ -439,3 +439,18 @@ console.log(acc1.pin);
 acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
 
 console.log(acc1.getMovements());
+
+*/
+
+////////////////////////////////////////
+//  Coding Challenege #4
+
+/*
+1. Re-create challenge #3, but this time using ES6 calsses : create an 'EVCl' child class of the 'CarCl' class
+2. Make the 'charge' property private;
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the Car class. They experiment with chaining!
+
+Data car 1 : 'Rivian' going at 120 km/h, with a charge of 23%
+
+*/
+// I have already done this.
