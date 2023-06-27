@@ -79,6 +79,7 @@ body {
 .country__name {
   font-size: 2.7rem;
   margin-bottom: 0.7rem;
+  text-transform: uppercase;
 }
 
 .country__region {
