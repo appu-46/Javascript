@@ -143,9 +143,8 @@ const getCountryData = function (country) {
     .then(data => {
       console.log(data);
       renderCountryData(data[0]);
-      const [neighbour] = data[0]?.borders;
-      // console.log(neighbour);
-      if (!neighbour) throw new Error('No Neighbour found!');
+      if (!data[0].borders) throw new Error('No Neighbour found!');
+      const [neighbour] = data[0].borders;
 
       return getJSON(
         `https://restcountries.com/v3.1/alpha/${neighbour}`,
@@ -158,7 +157,7 @@ const getCountryData = function (country) {
     })
     .catch(err => {
       console.log(`${err} 💥💥💥`);
-      renderError(`Something went wrong 💥 ${err.message}. Try again!`);
+      renderError(`Something went wrong 💥 ${err.message} Try again!`);
     })
     .finally(() => {
       countriesContainer.style.opacity = 1;
