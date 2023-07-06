@@ -192,6 +192,7 @@ TEST COORDINATES 2: -33.933, 18.474
 GOOD LUCK 😀
 */
 
+/*
 // GEOCODE API
 const whereAmI = function (lat, lng) {
   fetch(`https://geocode.xyz/${lat},${lng}?json=1`)
@@ -208,13 +209,48 @@ const whereAmI = function (lat, lng) {
 //     .then(data => console.log(`You are in ${data.city}, ${data.country}`));
 // };
 
-// const whereAmI = function (lat, lng) {
-//   // Set a 1 second timeout.
-//   const timeoutId = setTimeout(() => {
-//     // Fetch the geocode data.
-//     fetch(`https://geocode.xyz/${lat},${lng}?json=1`)
-//       .then(response => response.json())
-//       .then(data => console.log(`You are in ${data.city}, ${data.country}`));
-//   }, 1000);
-// };
+*/
+const whereAmI = function (lat, lng) {
+  // Set a 1 second timeout.
+  setTimeout(() => {
+    // Fetch the geocode data.
+    fetch(`https://geocode.xyz/${lat},${lng}?json=1`)
+      .then(response => {
+        console.log(response.json());
+        if (!response.ok) throw new Error(`Too many request in 1 second!`);
+        response.json();
+      })
+      .then(data => console.log(`You are in ${data.city}, ${data.country}`))
+      .catch(err => console.log(err));
+  }, 1500);
+};
 whereAmI(52.508, 13.381);
+whereAmI(19.037, 72.873);
+whereAmI(-33.933, 18.474);
+
+/*
+
+console.log('Test start');
+setTimeout(() => console.log(`0 sec timer`), 0);
+Promise.resolve('Resolve promise 1').then(res => console.log(res));
+
+Promise.resolve('Resolve promise 2').then(res => {
+  for (let i = 0; i < 1000000000; i++) {}
+  console.log(res);
+});
+
+console.log(`Test end.`);
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log(`Lottery draw is happening... 🔮 `);
+  setTimeout(function () {
+    if (Math.random() >= 0.5) {
+      resolve(`You WIN 💰`);
+    } else {
+      reject(new Error(`You lost your money 💩`));
+    }
+  }, 2000);
+});
+lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+
+*/
