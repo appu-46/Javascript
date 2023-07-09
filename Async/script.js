@@ -210,37 +210,40 @@ const whereAmI = function (lat, lng) {
 // };
 
 
-const whereAmI = function (lat, lng) {
-  // Set a 1 second timeout.
-  setTimeout(() => {
-    // Fetch the geocode data.
-    fetch(`https://geocode.xyz/${lat},${lng}?json=1`)
-      .then(response => {
-        // console.log(response.json());
-        // if (!response.ok) throw new Error(`Problem from geocode API`);
-        // if ((response.status = 403)) {
-        //   throw new Error(`Problem from geocode API`);
-        // }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-        if (!data.city)
-          throw new Error(`Invalid location! ${data.error.description}`);
-        else if (data.distance.includes(`Throttled`))
-          throw new Error(`Problem with Geocode API`);
-        console.log(`You are in ${data.city},${data.country}`);
-      })
-      .catch(err => console.error(err));
-  }, 1300);
+// Promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
 };
-whereAmI(52.508, 13.381);
-whereAmI(19.037, 72.873);
-whereAmI(-33.933, 18.474);
-whereAmI(-33.933, 18324.4744);
 */
-/*
 
+const whereAmI = function (lat, lng) {
+  // Fetch the geocode data.
+  fetch(`https://geocode.xyz/${lat},${lng}?json=1`)
+    .then(response => {
+      // console.log(response.json());
+      if (!response.ok) throw new Error(`Problem from geocode API`);
+      return response.json();
+    })
+    .then(data => {
+      // console.log(data);
+      if (!data.city)
+        throw new Error(
+          `Invalid location! ${data.error.description}. Error code : ${data.error.code}`
+        );
+      else if (data.distance.includes(`Throttled`))
+        throw new Error(`Problem with Geocode API`);
+      console.log(`You are in ${data.city},${data.country}`);
+    })
+    .catch(err => console.error(err));
+};
+setTimeout(() => whereAmI(52.508, 13.381), 1100);
+setTimeout(() => whereAmI(19.037, 72.873), 1100);
+setTimeout(() => whereAmI(-33.933, 18.474), 1100);
+setTimeout(() => whereAmI(-33.933, 18324.4744), 1100);
+
+/*
 console.log('Test start');
 setTimeout(() => console.log(`0 sec timer`), 0);
 Promise.resolve('Resolve promise 1').then(res => console.log(res));
@@ -267,6 +270,7 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 lotteryPromise.then(res => console.log(res)).
 catch(err => console.error(err));
 */
+
 // Promisifying setTimeout
 const wait = function (seconds) {
   return new Promise(function (resolve) {
@@ -274,16 +278,16 @@ const wait = function (seconds) {
   });
 };
 
-wait(1)
-  .then(() => {
-    console.log(`1 seconds passed`);
-    return wait(1);
-  })
-  .then(() => {
-    console.log(`2 seconds passed`);
-    return wait(1);
-  })
-  .then(() => {
-    console.log(`3 seconds passed`);
-    return wait(1);
-  });
+// wait(1)
+//   .then(() => {
+//     console.log(`1 seconds passed`);
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log(`2 seconds passed`);
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log(`3 seconds passed`);
+//     return wait(1);
+//   });
