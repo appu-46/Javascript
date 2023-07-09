@@ -215,17 +215,29 @@ const whereAmI = function (lat, lng) {
   setTimeout(() => {
     // Fetch the geocode data.
     fetch(`https://geocode.xyz/${lat},${lng}?json=1`)
-    .then(response => {
-      return response.json();
-    })
-    .then(data => console.log(`You are in ${data.city},${data.country}`))
-    .catch(err => console.log(err));
+      .then(response => {
+        // console.log(response.json());
+        // if (!response.ok) throw new Error(`Problem from geocode API`);
+        // if ((response.status = 403)) {
+        //   throw new Error(`Problem from geocode API`);
+        // }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        if (!data.city)
+          throw new Error(`Invalid location! ${data.error.description}`);
+        else if (data.distance.includes(`Throttled`))
+          throw new Error(`Problem with Geocode API`);
+        console.log(`You are in ${data.city},${data.country}`);
+      })
+      .catch(err => console.error(err));
   }, 1300);
 };
-// whereAmI(52.508, 13.381);
+whereAmI(52.508, 13.381);
 whereAmI(19.037, 72.873);
-// whereAmI(-33.933, 18.474);
-
+whereAmI(-33.933, 18.474);
+whereAmI(-33.933, 18324.4744);
 */
 /*
 
@@ -241,6 +253,7 @@ Promise.resolve('Resolve promise 2').then(res => {
 console.log(`Test end.`);
 */
 
+/*
 const lotteryPromise = new Promise(function (resolve, reject) {
   console.log(`Lottery draw is happening... 🔮 `);
   setTimeout(function () {
@@ -249,6 +262,28 @@ const lotteryPromise = new Promise(function (resolve, reject) {
     } else {
       reject(new Error(`You lost your money 💩`));
     }
-  }, 1500);
+  }, 500);
 });
-lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+lotteryPromise.then(res => console.log(res)).
+catch(err => console.error(err));
+*/
+// Promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(1)
+  .then(() => {
+    console.log(`1 seconds passed`);
+    return wait(1);
+  })
+  .then(() => {
+    console.log(`2 seconds passed`);
+    return wait(1);
+  })
+  .then(() => {
+    console.log(`3 seconds passed`);
+    return wait(1);
+  });
