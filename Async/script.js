@@ -217,7 +217,7 @@ const wait = function (seconds) {
   });
 };
 */
-
+/*
 const whereAmI = function (lat, lng) {
   // Fetch the geocode data.
   fetch(`https://geocode.xyz/${lat},${lng}?json=1`)
@@ -230,7 +230,7 @@ const whereAmI = function (lat, lng) {
       // console.log(data);
       if (!data.city)
         throw new Error(
-          `Invalid location! ${data.error.description}. Error code : ${data.error.code}`
+          `Invalid location! ${data.error.description} Error code : ${data.error.code}`
         );
       else if (data.distance.includes(`Throttled`))
         throw new Error(`Problem with Geocode API`);
@@ -238,11 +238,23 @@ const whereAmI = function (lat, lng) {
     })
     .catch(err => console.error(err));
 };
-setTimeout(() => whereAmI(52.508, 13.381), 1100);
-setTimeout(() => whereAmI(19.037, 72.873), 1100);
-setTimeout(() => whereAmI(-33.933, 18.474), 1100);
-setTimeout(() => whereAmI(-33.933, 18324.4744), 1100);
-
+setTimeout(() => {
+  console.log(`Testing`);
+  whereAmI(52.508, 13.381);
+}, 1000);
+setTimeout(() => {
+  console.log(`Testing`);
+  whereAmI(19.037, 72.873);
+}, 2100);
+setTimeout(() => {
+  console.log(`Testing`);
+  whereAmI(-33.933, 18.474);
+}, 3100);
+setTimeout(() => {
+  console.log(`Testing`);
+  whereAmI(-33.933, 18324.4744);
+}, 4100);
+*/
 /*
 console.log('Test start');
 setTimeout(() => console.log(`0 sec timer`), 0);
@@ -270,7 +282,7 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 lotteryPromise.then(res => console.log(res)).
 catch(err => console.error(err));
 */
-
+/*
 // Promisifying setTimeout
 const wait = function (seconds) {
   return new Promise(function (resolve) {
@@ -291,3 +303,17 @@ const wait = function (seconds) {
 //     console.log(`3 seconds passed`);
 //     return wait(1);
 //   });
+*/
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+getPosition().then(pos => console.log(pos));
