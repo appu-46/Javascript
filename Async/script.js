@@ -164,9 +164,9 @@ const getCountryData = function (country) {
     });
 };
 
-btn.addEventListener('click', function () {
-  getCountryData('australia');
-});
+// btn.addEventListener('click', function () {
+//   getCountryData('australia');
+// });
 
 // getCountryData('wuifhwuifhwueif');
 ///////////////////////////////////////
@@ -227,7 +227,7 @@ const whereAmI = function (lat, lng) {
       return response.json();
     })
     .then(data => {
-      // console.log(data);
+      console.log(data);
       if (!data.city)
         throw new Error(
           `Invalid location! ${data.error.description} Error code : ${data.error.code}`
@@ -235,13 +235,24 @@ const whereAmI = function (lat, lng) {
       else if (data.distance.includes(`Throttled`))
         throw new Error(`Problem with Geocode API`);
       console.log(`You are in ${data.city},${data.country}`);
+
+      return fetch(`https://restcountries.com/v3.1/name/${data.country}`);
+    })
+    .then(res => {
+      // console.log(res.json());
+      if (!res.ok) throw new Error(`Country not found (${res.status})`);
+
+      return res.json();
+    })
+    .then(data => {
+      console.log(data);
+      renderCountryData(data[0]);
     })
     .catch(err => console.error(err));
 };
-setTimeout(() => {
-  console.log(`Testing`);
-  whereAmI(52.508, 13.381);
-}, 1000);
+
+whereAmI(52.508, 13.381);
+
 setTimeout(() => {
   console.log(`Testing`);
   whereAmI(19.037, 72.873);
@@ -316,4 +327,84 @@ const getPosition = function () {
   });
 };
 
-getPosition().then(pos => console.log(pos));
+getPosition().then(pos => console.log(pos.coords));
+/*
+const whereAmI = function (lat, lng) {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+
+      return fetch(`https://geocode.xyz/${lat},${lng}?json=1`);
+    })
+
+    .then(response => {
+      // console.log(response.json());
+      if (!response.ok) throw new Error(`Problem from geocode API`);
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      if (!data.city)
+        throw new Error(
+          `Invalid location! ${data.error.description} Error code : ${data.error.code}`
+        );
+      else if (data.distance.includes(`Throttled`))
+        throw new Error(`Problem with Geocode API`);
+      console.log(`You are in ${data.city},${data.country}`);
+
+      return fetch(`https://restcountries.com/v3.1/name/${data.country}`);
+    })
+    .then(res => {
+      // console.log(res.json());
+      if (!res.ok) throw new Error(`Country not found (${res.status})`);
+
+      return res.json();
+    })
+    .then(data => {
+      console.log(data);
+      renderCountryData(data[0]);
+    })
+    .catch(err => console.error(err));
+};
+*/
+
+const whereAmI = function (lat, lng) {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+
+      return fetch(`https://geocode.xyz/${lat},${lng}?json=1`);
+    })
+    .then(response => {
+      // console.log(response.json());
+      if (!response.ok) throw new Error(`Problem from geocode API`);
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      if (!data.city)
+        throw new Error(
+          `Invalid location! ${data.error.description} Error code : ${data.error.code}`
+        );
+      else if (data.distance.includes(`Throttled`))
+        throw new Error(`Problem with Geocode API`);
+      console.log(`You are in ${data.city},${data.country}`);
+
+      getCountryData(data.country);
+    });
+  // return fetch(`https://restcountries.com/v3.1/name/${data.country}`);
+  // })
+  // .then(res => {
+  //   // console.log(res.json());
+  //   if (!res.ok) throw new Error(`Country not found (${res.status})`);
+
+  //   return res.json();
+  // })
+  // .then(data => {
+  //   console.log(data);
+  //   renderCountryData(data[0]);
+  // })
+  // .catch(err => console.error(err));
+};
+
+btn.addEventListener('click', whereAmI);
