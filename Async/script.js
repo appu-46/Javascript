@@ -121,19 +121,19 @@ getCountryAndNeighbour('bharat');
 
 //   // .then(data2 => renderCountryData(data2[0], 'neighbour'));
 // };
-// const getJSON = async function (url, errMsg = `Something went wrong!`) {
-//   const response = await fetch(url);
-//   if (!response.ok) throw new Error(`${errMsg} (${response.status})`);
-//   console.log(response.json());
-//   response.json();
-// };
-const getJSON = function (url, errMsg = `Something went wrong!`) {
-  return fetch(url).then(response => {
-    if (!response.ok) throw new Error(`${errMsg} (${response.status})`);
-    // console.log(response.json(), response);
-    return response.json();
-  });
+const getJSON = async function (url, errMsg = `Something went wrong!`) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`${errMsg} (${response.status})`);
+  // console.log(response.json());
+  return response.json();
 };
+// const getJSON = function (url, errMsg = `Something went wrong!`) {
+//   return fetch(url).then(response => {
+//     if (!response.ok) throw new Error(`${errMsg} (${response.status})`);
+//     // console.log(response.json(), response);
+//     return response.json();
+//   });
+// };
 
 const getCountryData = function (country) {
   getJSON(
@@ -156,8 +156,9 @@ const getCountryData = function (country) {
       renderCountryData(data2[0], 'neighbour');
     })
     .catch(err => {
-      console.log(`${err} 💥💥💥`);
-      renderError(`Something went wrong 💥 ${err.message} Try again!`);
+      console.error();
+      `${err} 💥💥💥`;
+      renderError(`💥 ${err.message} `);
     })
     .finally(() => {
       countriesContainer.style.opacity = 1;
