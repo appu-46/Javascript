@@ -328,7 +328,7 @@ const getPosition = function () {
   });
 };
 
-getPosition().then(pos => console.log(pos.coords));
+// getPosition().then(pos => console.log(pos.coords));
 /*
 const whereAmI = function (lat, lng) {
   getPosition()
@@ -434,3 +434,36 @@ TEST DATA: Images in the img folder. Test the error handler by passing a wrong i
 
 GOOD LUCK 😀
 */
+
+const imgContainer = document.querySelector('.images');
+
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const img = document.createElement('img');
+    img.src = imgPath;
+
+    img.addEventListener('load', function () {
+      imgContainer.append(img);
+      resolve(img);
+    });
+    img.addEventListener('error', function () {
+      reject(new Error(`Image not found!`));
+    });
+  });
+};
+
+// createImage('img/img-1.jpg')
+//   .then(img => console.log(`Image 1 loaded.`))
+//   .catch(err => console.error(err));
+
+// const chessStats = function (username) {
+//   fetch(`https://api.chess.com/pub/player/${username}/stats`)
+//     .then(res => {
+//       console.log(res);
+//       return res.json();
+//     })
+//     .then(data => console.log(data));
+// };
+
+// chessStats('appu_46');
+// chessStats('samayraina');
