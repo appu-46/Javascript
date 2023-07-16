@@ -545,17 +545,31 @@ const whereAmI = async function () {
       );
     else if (dataGeo.distance.includes(`Throttled`))
       throw new Error(
-        `Geocode API throttled! 😐 \nTry again after some time!⌛\n`
+        `Geocode API throttled! 😐 Try again after some time!⌛\n`
       );
     console.log(`You are in ${dataGeo.city},${dataGeo.country}`);
-
+    // Rendering country
     const res = await fetch(
       `https://restcountries.com/v3.1/name/${dataGeo.country}`
     );
     const data = await res.json();
     console.log(data);
     renderCountryData(data[0]);
-    // countriesContainer.style.opacity = 1;
+
+    // Rendering neighbour data
+    if (!data[0].borders) {
+      renderError('No Neighbour found!⛔');
+      return;
+    }
+    const [neighbour] = data[0].borders;
+    // console.log(neighbour);
+    // if (!neighbour) return;
+    const neighbour_res = await fetch(
+      `https://restcountries.com/v3.1/alpha/${neighbour}`
+    );
+    const neighbour_data = await neighbour_res.json();
+    console.log(neighbour_data);
+    renderCountryData(neighbour_data[0], 'neighbour');
   } catch (err) {
     console.error(`${err}`);
     renderError(err);
