@@ -28,13 +28,13 @@ const renderCountryData = function (data, classname = '') {
 </article>
 `;
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
-  // countriesContainer.style.opacity = 1;
-  btn.style.opacity = 0;
+  countriesContainer.style.opacity = 1;
+  // btn.style.opacity = 0;
 };
 /*
 const getCountryAndNeighbour = function (country) {
@@ -121,12 +121,14 @@ getCountryAndNeighbour('bharat');
 
 //   // .then(data2 => renderCountryData(data2[0], 'neighbour'));
 // };
+/*
 const getJSON = async function (url, errMsg = `Something went wrong!`) {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`${errMsg} (${response.status})`);
   // console.log(response.json());
   return response.json();
 };
+*/
 // const getJSON = function (url, errMsg = `Something went wrong!`) {
 //   return fetch(url).then(response => {
 //     if (!response.ok) throw new Error(`${errMsg} (${response.status})`);
@@ -134,7 +136,7 @@ const getJSON = async function (url, errMsg = `Something went wrong!`) {
 //     return response.json();
 //   });
 // };
-
+/*
 const getCountryData = function (country) {
   getJSON(
     `https://restcountries.com/v3.1/name/${country}`,
@@ -164,7 +166,7 @@ const getCountryData = function (country) {
       countriesContainer.style.opacity = 1;
     });
 };
-
+*/
 // btn.addEventListener('click', function () {
 //   getCountryData('australia');
 // });
@@ -369,6 +371,9 @@ const whereAmI = function (lat, lng) {
 };
 */
 
+// Ugnlier .then syntax
+
+/*
 const whereAmI = function (lat, lng) {
   getPosition()
     .then(pos => {
@@ -409,6 +414,7 @@ const whereAmI = function (lat, lng) {
 };
 
 btn.addEventListener('click', whereAmI);
+*/
 
 ///////////////////////////////////////
 // Coding Challenge #2
@@ -434,6 +440,7 @@ TEST DATA: Images in the img folder. Test the error handler by passing a wrong i
 
 GOOD LUCK 😀
 */
+/*
 const wait = function (seconds) {
   return new Promise(function (resolve) {
     setTimeout(resolve, seconds * 1000);
@@ -486,15 +493,70 @@ createImage('img/img-1.jpg')
     currentImg.style.display = 'none';
   })
   .catch(err => console.error(err));
+*/
 
-// const chessStats = function (username) {
-//   fetch(`https://api.chess.com/pub/player/${username}/stats`)
-//     .then(res => {
-//       console.log(res);
-//       return res.json();
-//     })
-//     .then(data => console.log(data));
-// };
+// Testing out chess API
+/*
+const chessStats = function (username) {
+  fetch(`https://api.chess.com/pub/player/${username}/stats`)
+    .then(res => {
+      console.log(res);
+      return res.json();
+    })
+    .then(data => console.log(data));
+};
 
-// chessStats('appu_46');
-// chessStats('samayraina');
+chessStats('appu_46');
+chessStats('samayraina');
+*/
+/*
+const whereAmI_async_await = async function (country) {
+  const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+  // console.log(res.json());
+  const data = await res.json();
+  console.log(data);
+};
+
+whereAmI_async_await('germany');
+*/
+
+// Prettier async await syntax
+
+const whereAmI = async function () {
+  try {
+    //  Geolocation
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+
+    // Reverse geocoding
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?json=1`);
+    if (!resGeo.ok) throw new Error(`Problem from geocode API`);
+
+    // Country data
+    const dataGeo = await resGeo.json();
+
+    console.log(dataGeo);
+    if (!dataGeo.city)
+      throw new Error(
+        `Invalid location! ${dataGeo.error.description} Error code : ${dataGeo.error.code}`
+      );
+    else if (dataGeo.distance.includes(`Throttled`))
+      throw new Error(
+        `Geocode API throttled! 😐 Try again after some time!⌛\n`
+      );
+    console.log(`You are in ${dataGeo.city},${dataGeo.country}`);
+
+    const res = await fetch(
+      `https://restcountries.com/v3.1/name/${dataGeo.country}`
+    );
+    const data = await res.json();
+    console.log(data);
+    renderCountryData(data[0]);
+    // countriesContainer.style.opacity = 1;
+  } catch (err) {
+    console.error(`${err}`);
+    renderError(err);
+  }
+};
+
+btn.addEventListener('click', whereAmI);
