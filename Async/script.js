@@ -2,6 +2,7 @@
 
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
+const errorContainer = document.querySelector('.error');
 
 ///////////////////////////////////////
 
@@ -29,11 +30,13 @@ const renderCountryData = function (data, classname = '') {
 `;
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
+  errorContainer.insertAdjacentText('beforeend', '');
+  errorContainer.style.opacity = 0;
 };
 
 const renderError = function (msg) {
-  countriesContainer.insertAdjacentText('beforeend', msg);
-  countriesContainer.style.opacity = 1;
+  errorContainer.insertAdjacentText('beforeend', msg);
+  errorContainer.style.opacity = 1;
   // btn.style.opacity = 0;
 };
 /*
@@ -542,7 +545,7 @@ const whereAmI = async function () {
       );
     else if (dataGeo.distance.includes(`Throttled`))
       throw new Error(
-        `Geocode API throttled! 😐 Try again after some time!⌛\n`
+        `Geocode API throttled! 😐 \nTry again after some time!⌛\n`
       );
     console.log(`You are in ${dataGeo.city},${dataGeo.country}`);
 
