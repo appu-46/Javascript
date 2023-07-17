@@ -3,6 +3,7 @@
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 const errorContainer = document.querySelector('.error');
+const errorMsg = document.getElementById(`errormg`);
 
 ///////////////////////////////////////
 
@@ -30,12 +31,12 @@ const renderCountryData = function (data, classname = '') {
 `;
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
-  errorContainer.insertAdjacentText('beforeend', '');
   errorContainer.style.opacity = 0;
 };
 
 const renderError = function (msg) {
-  errorContainer.insertAdjacentText('beforeend', msg);
+  errorContainer.style.opacity = 0;
+  errorMsg.textContent = msg;
   errorContainer.style.opacity = 1;
   // btn.style.opacity = 0;
 };
@@ -558,6 +559,7 @@ const whereAmI = async function () {
 
     // Rendering neighbour data
     if (!data[0].borders) {
+      // errorContainer.insertAdjacentText('beforeend', '');
       renderError('No Neighbour found!⛔');
       return;
     }

@@ -27,18 +27,21 @@ body {
 }
 
 .error {
-  width: 60vh;
-  display: flex;
+  /* width: 60vh; */
+  /* display: flex; */
   margin-top: 3rem;
   font-size: 2rem;
   opacity: 0;
+  transition: opacity 0.5s;
+}
+#errormg {
+  text-align: center;
   transition: opacity 0.5s;
 }
 
 .countries {
   /* margin-bottom: 8rem; */
   display: flex;
-
   font-size: 2rem;
   opacity: 0;
   transition: opacity 0.5s;
