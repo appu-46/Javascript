@@ -35,7 +35,7 @@ const renderCountryData = function (data, classname = '') {
 };
 
 const renderError = function (msg) {
-  errorContainer.style.opacity = 0;
+  // errorContainer.style.opacity = 0;
   errorMsg.textContent = msg;
   errorContainer.style.opacity = 1;
   // btn.style.opacity = 0;
@@ -125,14 +125,14 @@ getCountryAndNeighbour('bharat');
 
 //   // .then(data2 => renderCountryData(data2[0], 'neighbour'));
 // };
-/*
+
 const getJSON = async function (url, errMsg = `Something went wrong!`) {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`${errMsg} (${response.status})`);
   // console.log(response.json());
   return response.json();
 };
-*/
+
 // const getJSON = function (url, errMsg = `Something went wrong!`) {
 //   return fetch(url).then(response => {
 //     if (!response.ok) throw new Error(`${errMsg} (${response.status})`);
@@ -528,6 +528,7 @@ whereAmI_async_await('germany');
 
 const whereAmI = async function () {
   try {
+    errorContainer.style.opacity = 0;
     //  Geolocation
     const pos = await getPosition();
     const { latitude: lat, longitude: lng } = pos.coords;
@@ -545,9 +546,7 @@ const whereAmI = async function () {
         `Invalid location! ${dataGeo.error.description} Error code : ${dataGeo.error.code}`
       );
     else if (dataGeo.distance.includes(`Throttled`))
-      throw new Error(
-        `Geocode API throttled! 😐 Try again after some time!⌛\n`
-      );
+      throw new Error(`Something went wrong! 😐 Try again after some time!⌛`);
     console.log(`You are in ${dataGeo.city},${dataGeo.country}`);
     // Rendering country
     const res = await fetch(
@@ -603,3 +602,21 @@ window.onload = function () {
   chart.render();
 };
 */
+
+const get3countries = async function (c1, c2, c3) {
+  try {
+    //   const [data1] = await getJSON(`https://restcountries.com/v3.1/name/${c1}`);
+    //   const [data2] = await getJSON(`https://restcountries.com/v3.1/name/${c2}`);
+    //   const [data3] = await getJSON(`https://restcountries.com/v3.1/name/${c3}`);
+
+    const data = await Promise.all([
+      getJSON(`https://restcountries.com/v3.1/name/${c1}`),
+      getJSON(`https://restcountries.com/v3.1/name/${c2}`),
+      getJSON(`https://restcountries.com/v3.1/name/${c3}`),
+    ]);
+    console.log(data.map(d => d[0].capital));
+  } catch (err) {
+    console.error(`${err.message}`);
+  }
+};
+get3countries(`bharat`, `spain`, `malaysia`);

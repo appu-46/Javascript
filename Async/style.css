@@ -122,6 +122,24 @@ body {
   cursor: pointer;
 }
 
+.btn-country:hover {
+  border: none;
+  margin-top: 3rem;
+  font-size: 2rem;
+  padding: 2rem 5rem;
+  border-radius: 0.7rem;
+  color: white;
+  background-color: rgb(224, 62, 3);
+  cursor: pointer;
+}
+.btn-country:active {
+  transform: translate(-1.5%, 0.25px);
+  /* box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15); */
+  background-color: rgb(209, 56, 1);
+  color: white;
+  /* font-weight: bolder; */
+}
+
 .images {
   display: flex;
 }
