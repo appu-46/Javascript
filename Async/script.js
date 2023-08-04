@@ -602,7 +602,7 @@ window.onload = function () {
   chart.render();
 };
 */
-
+/*
 const get3countries = async function (c1, c2, c3) {
   try {
     //   const [data1] = await getJSON(`https://restcountries.com/v3.1/name/${c1}`);
@@ -620,3 +620,30 @@ const get3countries = async function (c1, c2, c3) {
   }
 };
 get3countries(`bharat`, `spain`, `malaysia`);
+*/
+
+// Promise.race
+/*
+(async function () {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v3.1/name/bharat`),
+    getJSON(`https://restcountries.com/v3.1/name/spain`),
+    getJSON(`https://restcountries.com/v3.1/name/malaysia`),
+  ]);
+  console.log(res[0]);
+})();
+*/
+const timeout = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error(`Request timed out!`));
+    }, sec * 1000);
+  });
+};
+
+Promise.race([
+  getJSON(`https://restcountries.com/v3.1/name/bharat`),
+  timeout(1),
+])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
