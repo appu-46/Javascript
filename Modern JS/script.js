@@ -7,7 +7,12 @@
 
 // console.log(price,tq);
 
-import * as ShoppingCart from './shoppingCart.js'
+// import * as ShoppingCart from './shoppingCart.js'
 
-ShoppingCart.addToCart('bread', 7)
-console.log(ShoppingCart.totalPrice);
+// ShoppingCart.addToCart('bread', 7)
+// console.log(ShoppingCart.totalPrice);
+
+import add, { addToCart, totalPrice as price, tq } from './shoppingCart.js';
+
+add('pizza', 2);
+console.log(price);
