@@ -1,6 +1,12 @@
 // Importing module
 console.log('Eporting module');
 
+// Blocking code
+// console.log(`Start fetching users`);
+
+// await fetch(`https://jsonplaceholder.typicode.com/users`);
+// console.log(`Finish Fetching`);
+
 const shoppingCart = 10;
 export const cart = [];
 
