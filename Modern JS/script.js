@@ -117,5 +117,5 @@ if (module.hot) {
 }
 
 import 'core-js/stable';
-// olifilling async functions
+// polifilling async functions
 import 'regenerator-runtime/runtime';
