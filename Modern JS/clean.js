@@ -16,7 +16,7 @@ const spendinglimits = Object.freeze({
 });
 // spendinglimits.jay = 200;
 console.log(spendinglimits);
-const getLimit = user => spendinglimits?.[user] ?? 0;
+const getLimit = (limits, user) => limits?.[user] ?? 0;
 
 const addExpense = function (
   state,
@@ -28,7 +28,7 @@ const addExpense = function (
   // if (!user) user = 'jonas';
   const clearUser = user.toLowerCase();
 
-  return value <= getLimit(clearUser)
+  return value <= getLimit(limits, clearUser)
     ? [...state, { value: -value, description, user: clearUser }]
     : state;
 };
@@ -41,21 +41,34 @@ const newBudget2 = addExpense(
   'Matilda'
 );
 const newBudget3 = addExpense(newBudget2, spendinglimits, 'Stuff', 'Jay');
-console.log(budget);
 
-const checkExpenses = function () {
-  for (const entry of budget)
-    if (entry.value < -getLimit(entry.user)) entry.flag = 'limit';
+const checkExpenses = function (state, limits) {
+  return state.map(entry => {
+    return entry.value < -getLimit(limits, entry.user)
+      ? { ...entry, flag: 'limit' }
+      : entry;
+  });
+  // for (const entry of budget)
+  //   if (entry.value < -getLimit(entry.user)) entry.flag = 'limit';
 };
-checkExpenses();
+const finalBudget = checkExpenses(newBudget3, spendinglimits);
+console.log(finalBudget);
 
-const bigExpenses = function (bigLimit) {
-  let output = '';
-  for (const el of budget)
-    output += el.value <= -bigLimit ? `${el.description.slice(-2)} / ` : ''; // Emojis are 2 chars
+// Impure
+const logBigExpenses = function (state, bigLimit) {
+  const bigExpenses = state
+    .filter(entry => entry.value <= -bigLimit)
+    // .map(entry => entry.description.slice(-2))
+    // .join(' / ');
+    .reduce((str, cur) => `${str} ${cur.description.slice(-2)}  / `, '');
 
-  output = output.slice(0, -2); // Remove last '/ '
-  console.log(output);
+  console.log(bigExpenses);
+  // let output = '';
+  // for (const el of newBudget3)
+  //   output += el.value <= -bigLimit ? `${el.description.slice(-2)} / ` : ''; // Emojis are 2 chars
+
+  // output = output.slice(0, -2); // Remove last '/ '
+  // console.log(output);
 };
 
-bigExpenses(1000);
+logBigExpenses(finalBudget, 500);
