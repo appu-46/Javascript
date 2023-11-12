@@ -55,7 +55,4 @@ export default class View {
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
-  addHandlerRenderer(handler) {
-    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
-  }
 }
